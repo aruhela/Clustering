@@ -4,13 +4,13 @@
 The standard K-Means algorithm implemented in Matlab is based on Euclidean distance between datapoints. The Matlab algorithm doesn't suit to cluster geographic coordinates as earth is spherical and not flat. We therefore need a modified version of k-Means algorithm which works correctly for data points specified in format of Latitude and Longitude. I have implemented one such version of KMeans whose pseudo-code is as follows. 
  
 ## Inputs: 
-- Datapoints        : Locations of the user in Latitude and Longitude
-- ClusterCount  	  : How many clusters you want 
-- IterationsCount   : The number of iterations for which the algorithm will iterate 
-- ClusterThreshold  : Minimum number of datapoints that should be present in a cluster 
-- Centroid  	      : Initial Position of Cluster centroids: Optional 
+1. Datapoints        : Locations of the user in Latitude and Longitude
+2. ClusterCount  	  : How many clusters you want 
+3. IterationsCount   : The number of iterations for which the algorithm will iterate 
+4. ClusterThreshold  : Minimum number of datapoints that should be present in a cluster 
+5. Centroid  	      : Initial Position of Cluster centroids: Optional 
  
-
+```
 K-Means(DataPoints X, ClusterCount K, IterationsCount I, ClusterThreshold T, Centroid C )
 { 
 - Uniformly choose K datapoints as centroids on the earth if initial centroids are not specified. 
@@ -30,7 +30,7 @@ K-Means(DataPoints X, ClusterCount K, IterationsCount I, ClusterThreshold T, Cen
 - Store the output of this program in files 
 - Some of the centroid may appear on the sea where we expect none of the users exist. We therefore replace such centroid with the location of the nearest data point from them. 
 } 
- 
+``` 
 Note : Nearest Centroid is determined on basis of Haversine Great-Circle Formula. Further whenever a worst cluster is divided, we cut the cluster along that direction (along Latitude or Longitude) which results in maximum benefit. i.e. the two cluster collectively have least cost after the division. 
  
 # Contributions of the algorithm 
