@@ -1,4 +1,4 @@
-Replica Server Placement using KMeans Algorithm
+# Replica Server Placement using KMeans Algorithm
 ===============================================
 
 The standard K-Means algorithm implemented in Matlab is based on Euclidean distance between datapoints. The Matlab algorithm doesn't suit to cluster geographic coordinates as earth is spherical and not flat. We therefore need a modified version of k-Means algorithm which works correctly for data points specified in format of Latitude and Longitude. I have implemented one such version of KMeans whose pseudo-code is as follows. 
@@ -36,7 +36,7 @@ K-Means(DataPoints X, ClusterCount K, IterationsCount I, ClusterThreshold T, Cen
  
 Note : Nearest Centroid is determined on basis of Haversine Great-Circle Formula. Further whenever a worst cluster is divided, we cut the cluster along that direction (along Latitude or Longitude) which results in maximum benefit. i.e. the two cluster collectively have least cost after the division. 
  
-Contributions of the algorithm 
+# Contributions of the algorithm 
 -------------------------------
 	- The algorithm works well for spherical datapoints 
 	- Converges in less than 30 iterations 
@@ -45,14 +45,14 @@ Contributions of the algorithm
 	- Handles situation when clusters becomes very small. 
 	- Chooses worst cluster for division and division is made on longest axes. 
 
-Limitation  
+# Limitation  
 -------------------------------
 	- The algorithm still requires following input parameter  
 		. ClusterCount 
 		. IterationsCount 
 	- The efficiency of the program depends upon initial chosen centroid. 
 
-Observations/Results
+# Observations/Results
 -------------------------------
 With above algorithm, I found that if we choose initial centroids uniformly on the sphere, then we are able to get more than 10% of benefit in placing the surrogate servers compared to case in which initial centroids are placed at the locations where most of the CDN providers have placed their servers. In comparison we have kept the value of K same in both cases. 
  
